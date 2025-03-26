@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ds562team9-datafactory"
+		},
+		"ABS_news_data_connectionString": {
+			"value": ""
+		},
+		"HttpServer_news_data_properties_typeProperties_url": {
+			"value": "https://newsapi.org/v2/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
