@@ -1,0 +1,19 @@
+{
+	"name": "Json_news_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer_news_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "everything?q=crypto%20OR%20bitcoin&language=en&sortBy=publishedAt&pageSize=10"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

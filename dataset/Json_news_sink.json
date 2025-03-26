@@ -1,0 +1,21 @@
+{
+	"name": "Json_news_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ABS_news_data",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "news_crypto.json",
+				"folderPath": "news_sentiment",
+				"container": "bronze"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
