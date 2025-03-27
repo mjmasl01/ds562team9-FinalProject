@@ -11,7 +11,7 @@
 			"location": {
 				"type": "HttpServerLocation",
 				"relativeUrl": {
-					"value": "sentiments?page=@{utcNow()}&limit=100",
+					"value": "sentiments",
 					"type": "Expression"
 				}
 			}
