@@ -374,7 +374,7 @@
 					"location": {
 						"type": "HttpServerLocation",
 						"relativeUrl": {
-							"value": "sentiments",
+							"value": "sentiments?limit=1000",
 							"type": "Expression"
 						}
 					}
@@ -472,7 +472,7 @@
 					"enableServerCertificateValidation": true,
 					"authenticationType": "Anonymous",
 					"authHeaders": {
-						"api_key": {
+						"Api_key": {
 							"type": "SecureString",
 							"value": "**********"
 						}
