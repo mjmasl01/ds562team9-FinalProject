@@ -29,7 +29,7 @@
 		},
 		"HttpServer_twitter_reddit_other_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://api.tokenmetrics.com/v2/"
+			"defaultValue": "https://api.tokenmetrics.com/"
 		}
 	},
 	"variables": {
@@ -271,7 +271,7 @@
 					"location": {
 						"type": "HttpServerLocation",
 						"relativeUrl": {
-							"value": "sentiments?limit=1000",
+							"value": "/v2/sentiments?limit=1000&page=0",
 							"type": "Expression"
 						}
 					}
