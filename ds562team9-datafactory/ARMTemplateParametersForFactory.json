@@ -5,17 +5,23 @@
 		"factoryName": {
 			"value": "ds562team9-datafactory"
 		},
+		"ABS_crypto_prices_connectionString": {
+			"value": ""
+		},
 		"ABS_news_data_connectionString": {
 			"value": ""
 		},
-		"ABS_crypto_prices_connectionString": {
+		"ABS_twitter_reddit_other_connectionString": {
 			"value": ""
+		},
+		"HttpServer_crypto_prices_properties_typeProperties_url": {
+			"value": "https://pro-api.coinmarketcap.com/v1/"
 		},
 		"HttpServer_news_data_properties_typeProperties_url": {
 			"value": "https://newsapi.org/v2/"
 		},
-		"HttpServer_crypto_prices_properties_typeProperties_url": {
-			"value": "https://pro-api.coinmarketcap.com/v1/"
+		"HttpServer_twitter_reddit_other_properties_typeProperties_url": {
+			"value": "https://api.tokenmetrics.com/v2/"
 		}
 	}
 }
