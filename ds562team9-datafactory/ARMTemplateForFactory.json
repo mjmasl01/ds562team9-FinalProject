@@ -428,7 +428,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "sentiments?limit=1000&page=0"
+						"relativeUrl": "sentiments?page=@{item()}&limit=100"
 					}
 				},
 				"schema": {}
