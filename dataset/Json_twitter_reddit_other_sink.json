@@ -1,0 +1,20 @@
+{
+	"name": "Json_twitter_reddit_other_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ABS_twitter_reddit_other",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "tm_sentiment_@{utcnow('yyyy-MM-dd-HHmmss')}.json",
+				"folderPath": "sentiment/tokenmetric",
+				"container": "bronze"
+			}
+		},
+		"schema": {}
+	}
+}
