@@ -63,6 +63,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ABS_twitter_reddit_other')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('ABS_twitter_reddit_other_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/HttpServer_crypto_prices')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -115,19 +128,6 @@
 							"value": "**********"
 						}
 					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ABS_twitter_reddit_other')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('ABS_twitter_reddit_other_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -229,30 +229,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Json_twitter_reddit_other_source')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "HttpServer_twitter_reddit_other",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "HttpServerLocation",
-						"relativeUrl": "sentiments?page=@{item()}&limit=100"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/HttpServer_twitter_reddit_other')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Json_twitter_reddit_other_sink')]",
+			"name": "[concat(parameters('factoryName'), '/Json_twitter_data_sink')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -277,6 +254,32 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ABS_twitter_reddit_other')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json_twitter_data_source')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "HttpServer_twitter_reddit_other",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": {
+							"value": "sentiments",
+							"type": "Expression"
+						}
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/HttpServer_twitter_reddit_other')]"
 			]
 		},
 		{
@@ -413,7 +416,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline_twitter_reddit_other')]",
+			"name": "[concat(parameters('factoryName'), '/pipeline_twitter_data')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -454,14 +457,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "Json_twitter_reddit_other_source",
+								"referenceName": "Json_twitter_data_source",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "Json_twitter_reddit_other_sink",
+								"referenceName": "Json_twitter_data_sink",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -474,8 +477,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Json_twitter_reddit_other_source')]",
-				"[concat(variables('factoryId'), '/datasets/Json_twitter_reddit_other_sink')]"
+				"[concat(variables('factoryId'), '/datasets/Json_twitter_data_source')]",
+				"[concat(variables('factoryId'), '/datasets/Json_twitter_data_sink')]"
 			]
 		}
 	]
