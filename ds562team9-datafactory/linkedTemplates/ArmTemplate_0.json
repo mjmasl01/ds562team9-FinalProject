@@ -271,7 +271,7 @@
 					"location": {
 						"type": "HttpServerLocation",
 						"relativeUrl": {
-							"value": "/v2/sentiments?limit=1000&page=0",
+							"value": "v2/sentiments?limit=1000&page=0",
 							"type": "Expression"
 						}
 					}
