@@ -428,7 +428,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "sentiment?limit=1000&page=0"
+						"relativeUrl": "sentiments?limit=1000&page=0"
 					}
 				},
 				"schema": {}
@@ -464,7 +464,10 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "tm_sentiment_@{utcnow('yyyy-MM-dd-HHmmss')}.json",
+						"fileName": {
+							"value": "tm_sentiment_@{utcNow('yyyy-MM-dd-HHmmss')}.json",
+							"type": "Expression"
+						},
 						"folderPath": "sentiment/tokenmetric",
 						"container": "bronze"
 					}
