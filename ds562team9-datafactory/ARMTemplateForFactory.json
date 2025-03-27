@@ -126,7 +126,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "everything?q=crypto%20OR%20bitcoin&language=en&sortBy=publishedAt&pageSize=10"
+						"relativeUrl": "everything?q=crypto%20OR%20bitcoin&language=en&sortBy=publishedAt&pageSize=10&apiKey=8967a54d901b4989b4b806aa6bcb664c"
 					}
 				},
 				"schema": {}
