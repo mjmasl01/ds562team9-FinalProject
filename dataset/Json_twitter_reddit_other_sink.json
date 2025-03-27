@@ -10,7 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "tm_sentiment_@{utcnow('yyyy-MM-dd-HHmmss')}.json",
+				"fileName": {
+					"value": "tm_sentiment_@{utcNow('yyyy-MM-dd-HHmmss')}.json",
+					"type": "Expression"
+				},
 				"folderPath": "sentiment/tokenmetric",
 				"container": "bronze"
 			}
