@@ -11,9 +11,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ABS_news_data'"
 		},
+		"ABS_crypto_prices_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ABS_crypto_prices'"
+		},
 		"HttpServer_news_data_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://newsapi.org/v2/"
+		},
+		"HttpServer_crypto_prices_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pro-api.coinmarketcap.com/v1/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -45,8 +53,14 @@
 					"ABS_news_data_connectionString": {
 						"value": "[parameters('ABS_news_data_connectionString')]"
 					},
+					"ABS_crypto_prices_connectionString": {
+						"value": "[parameters('ABS_crypto_prices_connectionString')]"
+					},
 					"HttpServer_news_data_properties_typeProperties_url": {
 						"value": "[parameters('HttpServer_news_data_properties_typeProperties_url')]"
+					},
+					"HttpServer_crypto_prices_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer_crypto_prices_properties_typeProperties_url')]"
 					}
 				}
 			},

@@ -8,8 +8,14 @@
 		"ABS_news_data_connectionString": {
 			"value": ""
 		},
+		"ABS_crypto_prices_connectionString": {
+			"value": ""
+		},
 		"HttpServer_news_data_properties_typeProperties_url": {
 			"value": "https://newsapi.org/v2/"
+		},
+		"HttpServer_crypto_prices_properties_typeProperties_url": {
+			"value": "https://pro-api.coinmarketcap.com/v1/"
 		},
 		"containerUri": {
 			"value": ""
