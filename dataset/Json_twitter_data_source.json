@@ -11,7 +11,7 @@
 			"location": {
 				"type": "HttpServerLocation",
 				"relativeUrl": {
-					"value": "sentiments",
+					"value": "sentiments?limit=1000",
 					"type": "Expression"
 				}
 			}
