@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_twitter_reddit_other",
+	"name": "pipeline_twitter_data",
 	"properties": {
 		"activities": [
 			{
@@ -38,13 +38,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Json_twitter_reddit_other_source",
+						"referenceName": "Json_twitter_data_source",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Json_twitter_reddit_other_sink",
+						"referenceName": "Json_twitter_data_sink",
 						"type": "DatasetReference"
 					}
 				]

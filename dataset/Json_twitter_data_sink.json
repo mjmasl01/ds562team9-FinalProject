@@ -1,5 +1,5 @@
 {
-	"name": "Json_twitter_reddit_other_sink",
+	"name": "Json_twitter_data_sink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ABS_twitter_reddit_other",

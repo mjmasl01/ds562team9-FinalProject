@@ -1,5 +1,5 @@
 {
-	"name": "Json_twitter_reddit_other_source",
+	"name": "Json_twitter_data_source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "HttpServer_twitter_reddit_other",
@@ -10,7 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "sentiments?page=@{item()}&limit=100"
+				"relativeUrl": {
+					"value": "sentiments?page=@{utcNow()}&limit=100",
+					"type": "Expression"
+				}
 			}
 		},
 		"schema": {}
