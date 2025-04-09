@@ -25,7 +25,7 @@
 		},
 		"HttpServer_news_data_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://newsapi.org/v2/"
+			"defaultValue": "https://gnews.io/"
 		},
 		"HttpServer_twitter_reddit_other_properties_typeProperties_url": {
 			"type": "string",
@@ -170,72 +170,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline_twitter_data')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy data_twitter_reddit_other",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "JsonSource",
-								"storeSettings": {
-									"type": "HttpReadSettings",
-									"requestMethod": "GET"
-								},
-								"formatSettings": {
-									"type": "JsonReadSettings"
-								}
-							},
-							"sink": {
-								"type": "JsonSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "JsonWriteSettings"
-								}
-							},
-							"enableStaging": false
-						},
-						"inputs": [
-							{
-								"referenceName": "Json_twitter_data_source",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Json_twitter_data_sink",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Json_twitter_data_source')]",
-				"[concat(variables('factoryId'), '/datasets/Json_twitter_data_sink')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/Json_crypto_prices_sink')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -315,74 +249,24 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "HttpServer_news_data",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"q": "crypto",
+						"apikey": "e956973712f93439a1eae6c89fa5efe5"
+					}
 				},
 				"annotations": [],
 				"type": "Json",
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "everything?q=crypto%20OR%20bitcoin&language=en&sortBy=publishedAt&pageSize=10&apiKey=8967a54d901b4989b4b806aa6bcb664c"
+						"relativeUrl": "/api/v4/search?q=crypto&from=2013-01-03T00:00:00Z&to=2021-02-09T23:59:59Z&apikey=e956973712f93439a1eae6c89fa5efe5"
 					}
 				},
 				"schema": {}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/HttpServer_news_data')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Json_twitter_data_sink')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ABS_twitter_reddit_other",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": {
-							"value": "tm_sentiment_@{utcNow('yyyy-MM-dd-HHmmss')}.json",
-							"type": "Expression"
-						},
-						"folderPath": "sentiment/tokenmetric",
-						"container": "bronze"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ABS_twitter_reddit_other')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Json_twitter_data_source')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "HttpServer_twitter_reddit_other",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "HttpServerLocation",
-						"relativeUrl": {
-							"value": "v2/sentiments?limit=1000&page=0",
-							"type": "Expression"
-						}
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/HttpServer_twitter_reddit_other')]"
 			]
 		},
 		{
@@ -450,6 +334,24 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"parameters": {
+					"q": {
+						"type": "string",
+						"defaultValue": "crypto"
+					},
+					"apikey": {
+						"type": "string",
+						"defaultValue": "e956973712f93439a1eae6c89fa5efe5"
+					},
+					"from": {
+						"type": "string",
+						"defaultValue": "2013-01-03T00:00:00Z"
+					},
+					"to": {
+						"type": "string",
+						"defaultValue": "2021-02-09T23:59:59Z"
+					}
+				},
 				"annotations": [],
 				"type": "HttpServer",
 				"typeProperties": {

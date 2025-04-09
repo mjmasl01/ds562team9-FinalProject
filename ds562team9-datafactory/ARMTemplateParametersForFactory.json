@@ -18,7 +18,7 @@
 			"value": "https://pro-api.coinmarketcap.com/v1/"
 		},
 		"HttpServer_news_data_properties_typeProperties_url": {
-			"value": "https://newsapi.org/v2/"
+			"value": "https://gnews.io/"
 		},
 		"HttpServer_twitter_reddit_other_properties_typeProperties_url": {
 			"value": "https://api.tokenmetrics.com/"
