@@ -6,14 +6,6 @@
 				"type": "string",
 				"defaultValue": "crypto"
 			},
-			"lang": {
-				"type": "string",
-				"defaultValue": "en"
-			},
-			"country": {
-				"type": "string",
-				"defaultValue": "us"
-			},
 			"apikey": {
 				"type": "string",
 				"defaultValue": "e956973712f93439a1eae6c89fa5efe5"
