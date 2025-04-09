@@ -8,21 +8,13 @@
 			},
 			"apikey": {
 				"type": "string",
-				"defaultValue": "e956973712f93439a1eae6c89fa5efe5"
-			},
-			"from": {
-				"type": "string",
-				"defaultValue": "2013-01-03T00:00:00Z"
-			},
-			"to": {
-				"type": "string",
-				"defaultValue": "2021-02-09T23:59:59Z"
+				"defaultValue": "pub_79407bfc97d14e353618aca2441ab6ba8506e"
 			}
 		},
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "https://gnews.io/",
+			"url": "https://newsdata.io/api/1/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
