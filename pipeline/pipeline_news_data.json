@@ -3,53 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copydata_news",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "JsonSource",
-						"storeSettings": {
-							"type": "HttpReadSettings",
-							"requestMethod": "GET"
-						},
-						"formatSettings": {
-							"type": "JsonReadSettings"
-						}
-					},
-					"sink": {
-						"type": "JsonSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "JsonWriteSettings"
-						}
-					},
-					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "Json_news_source",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "Json_news_sink",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
 				"name": "Until_collected",
 				"type": "Until",
 				"dependsOn": [],
@@ -59,6 +12,103 @@
 						"value": "@greaterOrEquals(variables('currentFrom'), variables('targetTo'))\n",
 						"type": "Expression"
 					},
+					"activities": [
+						{
+							"name": "Copy data_news",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "JsonSource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									},
+									"formatSettings": {
+										"type": "JsonReadSettings"
+									}
+								},
+								"sink": {
+									"type": "JsonSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "JsonWriteSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "Json_news_source",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Json_news_sink",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Set_currentTo",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Copy data_news",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "currentTo",
+								"value": "@formatDateTime(addDays(variables('currentFrom'), variables('intervalDays')), 'yyyy-MM-ddTHH:mm:ssZ')\n"
+							}
+						},
+						{
+							"name": "Call_GNews_API",
+							"type": "WebActivity",
+							"dependsOn": [
+								{
+									"activity": "Set_currentTo",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "GET",
+								"url": {
+									"value": "concat('https://gnews.io/api/v4/search?q=crypto&from=', variables('currentFrom'), '&to=', variables('currentTo'), '&apikey=e956973712f93439a1eae6c89fa5efe5')",
+									"type": "Expression"
+								}
+							}
+						}
+					],
 					"timeout": "0.12:00:00"
 				}
 			}
