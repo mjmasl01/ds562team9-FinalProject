@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_news_data",
+	"name": "pipeline_live_news_data",
 	"properties": {
 		"activities": [
 			{

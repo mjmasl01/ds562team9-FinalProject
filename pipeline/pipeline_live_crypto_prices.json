@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_crypto_prices",
+	"name": "pipeline_live_crypto_prices",
 	"properties": {
 		"activities": [
 			{
