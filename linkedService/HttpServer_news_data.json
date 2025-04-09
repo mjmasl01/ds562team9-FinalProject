@@ -9,6 +9,14 @@
 			"apikey": {
 				"type": "string",
 				"defaultValue": "e956973712f93439a1eae6c89fa5efe5"
+			},
+			"from": {
+				"type": "string",
+				"defaultValue": "2013-01-03T00:00:00Z"
+			},
+			"to": {
+				"type": "string",
+				"defaultValue": "2021-02-09T23:59:59Z"
 			}
 		},
 		"annotations": [],
