@@ -6,9 +6,7 @@
 			"type": "LinkedServiceReference",
 			"parameters": {
 				"q": "crypto",
-				"apikey": "e956973712f93439a1eae6c89fa5efe5",
-				"from": "2013-01-03T00:00:00Z",
-				"to": "2021-02-09T23:59:59Z"
+				"apikey": "pub_79407bfc97d14e353618aca2441ab6ba8506e"
 			}
 		},
 		"annotations": [],
@@ -16,7 +14,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "/api/v4/search?q=crypto&from=2013-01-03T00:00:00Z&to=2021-02-09T23:59:59Z&apikey=e956973712f93439a1eae6c89fa5efe5"
+				"relativeUrl": "news?q=crypto&apikey=pub_79407bfc97d14e353618aca2441ab6ba8506e"
 			}
 		},
 		"schema": {}
