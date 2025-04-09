@@ -103,9 +103,30 @@
 							"typeProperties": {
 								"method": "GET",
 								"url": {
-									"value": "concat('https://gnews.io/api/v4/search?q=crypto&from=', variables('currentFrom'), '&to=', variables('currentTo'), '&apikey=e956973712f93439a1eae6c89fa5efe5')",
+									"value": "@concat('https://gnews.io/api/v4/search?q=crypto&from=', variables('currentFrom'), '&to=', variables('currentTo'), '&apikey=e956973712f93439a1eae6c89fa5efe5')",
 									"type": "Expression"
 								}
+							}
+						},
+						{
+							"name": "Set_currentFrom",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Call_GNews_API",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "currentFrom",
+								"value": "@variables('currentTo')\n"
 							}
 						}
 					],
