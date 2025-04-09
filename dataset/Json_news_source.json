@@ -3,14 +3,18 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "HttpServer_news_data",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"q": "crypto",
+				"apikey": "e956973712f93439a1eae6c89fa5efe5"
+			}
 		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "/api/v4/search?q=crypto&apikey=e956973712f93439a1eae6c89fa5efe5"
+				"relativeUrl": "/api/v4/search?q=crypto&from=2013-01-03T00:00:00Z&to=2021-02-09T23:59:59Z&apikey=e956973712f93439a1eae6c89fa5efe5"
 			}
 		},
 		"schema": {}
