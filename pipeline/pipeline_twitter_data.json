@@ -35,19 +35,7 @@
 						}
 					},
 					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "Json_twitter_data_source",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "Json_twitter_data_sink",
-						"type": "DatasetReference"
-					}
-				]
+				}
 			}
 		],
 		"annotations": []
