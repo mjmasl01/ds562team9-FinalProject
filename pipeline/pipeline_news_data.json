@@ -48,8 +48,38 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Until_collected",
+				"type": "Until",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greaterOrEquals(variables('currentFrom'), variables('targetTo'))\n",
+						"type": "Expression"
+					},
+					"timeout": "0.12:00:00"
+				}
 			}
 		],
+		"parameters": {
+			"currentFrom": {
+				"type": "string",
+				"defaultValue": "2013-01-03T00:00:00Z"
+			},
+			"intervalDays": {
+				"type": "int",
+				"defaultValue": 30
+			},
+			"targetTo": {
+				"type": "string",
+				"defaultValue": "2021-02-09T00:00:00Z"
+			},
+			"currentTo": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2025-03-26T19:26:44Z"
 	},
