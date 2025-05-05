@@ -1,0 +1,50 @@
+{
+	"name": "ds_crypto_news",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ds_crypto_news source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "crypto_news_filtered_2013_2018.parquet",
+				"folderPath": "historical_crypto_news_data",
+				"container": "silver"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "url",
+				"type": "UTF8"
+			},
+			{
+				"name": "title",
+				"type": "UTF8"
+			},
+			{
+				"name": "text",
+				"type": "UTF8"
+			},
+			{
+				"name": "html",
+				"type": "UTF8"
+			},
+			{
+				"name": "year",
+				"type": "UTF8"
+			},
+			{
+				"name": "author",
+				"type": "UTF8"
+			},
+			{
+				"name": "source",
+				"type": "UTF8"
+			}
+		]
+	}
+}
