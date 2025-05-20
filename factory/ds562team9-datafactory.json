@@ -1,9 +1,0 @@
-{
-	"name": "ds562team9-datafactory",
-	"location": "eastus",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "04428dc7-af97-4771-83b8-92528de111ea",
-		"tenantId": "d57d32cc-c121-488f-b07b-dfe705680c71"
-	}
-}
